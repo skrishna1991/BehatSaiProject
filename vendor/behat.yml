@@ -1,0 +1,14 @@
+default:
+  suites:
+    default:
+      paths:
+        features: features
+        bootstrap: 'features/bootstrap'
+      contexts:
+        #- Behat\MinkExtension\Context\MinkContext
+        - FeatureContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      default_session: chrome
+      base_url: https://umamisite.ddev.site/en
