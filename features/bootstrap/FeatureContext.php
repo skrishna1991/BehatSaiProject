@@ -87,5 +87,28 @@ class FeatureContext extends RawMinkContext implements Context
     public function i_am_on_the_homepage()
     {
     }
+    /**
+     * @When I enter following details
+     * @When Ingreso los siguientes detalles
+     */
+    public function iEnterFollowingDetails(TableNode $table)
+    {
+        $page = $this->getSession()->getPage();
+
+        foreach ($table as $row)
+        {
+            var_dump($row);
+
+            $name = $row['Your name'];
+            $email =   $row['Your email address'];
+            $subject = $row['Subject'];
+            $message = $row['Message'];
+            $page->find('css','input#edit-name')->setValue($name);
+            $page->find('xpath',"//input[@id='edit-mail']")->setValue($email);
+            $page->find('css','input#edit-subject-0-value')->setValue($subject);
+            $page->find('css','textarea#edit-message-0-value')->setValue($message);
+        }
+    }
+
 }
 
