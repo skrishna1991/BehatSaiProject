@@ -13,4 +13,4 @@ default:
      selenium2: ~
      browser_name: chrome
      default_session: selenium2
-     base_url: http://umamisite.ddev.site/en
+     base_url: http://umamisite.ddev.site/en/user/login

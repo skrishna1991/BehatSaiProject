@@ -18,8 +18,10 @@ use Behat\Testwork\Hook\Scope\AfterSuiteScope;
 /**
  * Defines application features from the specific context.
  */
+
 class FeatureContext extends RawMinkContext implements Context
 {
+
     /**
      * Initializes context.
      *
@@ -109,6 +111,124 @@ class FeatureContext extends RawMinkContext implements Context
             $page->find('css','textarea#edit-message-0-value')->setValue($message);
         }
     }
+    /**
+     * @Then wait for :arg1 secs
+     */
+    public function waitForSecs($arg1)
+    {
+        sleep(seconds: $arg1);
+    }
+    /**
+     * @Then enter keyword in Search :arg1
+     */
+    public function enterKeywordInSearch($arg1)
+    {
+        $page = $this->getSession()->getPage();
+        $page->find('css', 'input#edit-keys')->setValue($arg1);
+    }
+    /**
+     * @Then I click button :arg1
+     */
+    public function iClickButton($arg1)
+    {
+        $page = $this->getSession()->getPage();
 
+            $page->find('xpath', $arg1)->click();
+
+    }
+    /**
+     * @Then I should see on page :arg1
+     * @Then I should not see on page :arg1
+     */
+    public function iShouldSeeOnPage($arg1)
+    {
+        $page = $this->getSession()->getPage();
+        $page->hasContent("$arg1");
+    }
+    /**
+     * @Given /^Enter field "([^"]*)" with value "([^"]*)"$/
+     */
+    public function enterFieldWithValue($locator, $value)
+    {
+        $page = $this->getSession()->getPage();
+        $page->find('css', 'input#edit-keys--2')->setValue($value);
+    }
+
+    /**
+     * @When I login as admin user
+     * @When inicio sesión como usuario administrador
+     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     */
+    public function iLoginAsAdminUser()
+    {
+        $page = $this->getSession()->getPage();
+        $page->fillField('edit-name', 'krishna1991');
+        $page->fillField('edit-pass', 'Swetha@2020');
+        $page->pressButton('Log in');
+    }
+
+    /**
+     * @When I login as Editor user
+     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     */
+    public function iLoginAsCmUser()
+    {
+        $page = $this->getSession()->getPage();
+        $page->fillField('edit-name', 'honeycomb');
+        $page->fillField('edit-pass', 'honey@123');
+        $page->pressButton('Log in');
+    }
+
+    /**
+     * @When I enter keyword :arg1 in textbox :arg2
+     */
+    public function iEnterKeywordInTextbox($arg1, $arg2)
+    {
+        $page = $this->getSession()->getPage();
+        $page->find('css', $arg2)->setValue($arg1);
+    }
+
+    /**
+     * @Then Print :arg1
+     */
+    public function print($arg1)
+    {
+        echo $arg1;
+    }
+
+    /**
+     * @Then I scroll and click button :arg1
+     * @throws Exception
+     */
+    public function iScrollAndClickButton($arg1)
+    {
+        $page = $this->getSession()->getPage();
+        $this->scrollAndClick($arg1);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function scrollAndClick($cssSelector)
+    {
+        $function = <<<JS
+        (
+            function()
+            {
+                document.querySelector("$cssSelector").scrollIntoView();
+            }, function()
+            {
+                document.querySelector("$cssSelector").click();
+            })() 
+JS;
+        try
+        {
+            $this->getSession()->executeScript($function);
+        }
+        catch (Exception $e)
+        {
+            throw new \Exception("Scroll Into View Failed. Check Your Script");
+        }
+    }
 }
 
