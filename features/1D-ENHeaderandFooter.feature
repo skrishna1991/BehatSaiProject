@@ -1,19 +1,20 @@
 
 #language: en
-Feature: As an anonymous user
-  In order to navigate to respective header and footer links
-  user should be able to see header and footer with its components
-
+Feature:  verification of Search and advanced search feature.
   Background:
-    Given I am on the homepage
-
+    Given I am on homepage
+    And wait for 2 secs
   @Header
-  Scenario: As user perform various header actions
-    When I go to "<Page>"
-    And I follow "Menu1"
-    And I follow "Menu2"
-    And I follow "Menu3"
-    And I follow "Menu4"
-      | Menu1 | Menu2    | Menu3   | Menu4 |
-      | Home  | Articles | Recipes | Home  |
+  Scenario: Header actions test
+    And I follow "Home"
+    And I follow "Articles"
+    And I follow "Recipes"
+    And wait for 2 secs
+
+  @Footer
+  Scenario: Footer actions test
+    And I follow "Alcohol free"
+    And I follow "Chocolate"
+    And I follow "Drinks"
+    And I follow "Herbs"
     And wait for 2 secs

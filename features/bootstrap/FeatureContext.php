@@ -230,5 +230,21 @@ JS;
             throw new \Exception("Scroll Into View Failed. Check Your Script");
         }
     }
+    /**
+     * @Given :arg1 terms:
+     */
+    public function terms($arg1, TableNode $table)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When :arg1 content:
+     */
+    public function content($arg1, TableNode $table)
+    {
+        throw new PendingException();
+    }
+
 }
 

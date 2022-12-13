@@ -8,5 +8,15 @@
   },
   "config": {
     "bin-dir": "bin/"
-  }
+  },
+  "require-dev": {
+    "drush/drush": "^11.2",
+    "drush-ops/behat-drush-endpoint": "^9",
+    "sensiolabs/behat-page-object-extension": "^2.0"
+  },
+
+  "extra": {
+    "symfony-app-dir": "app",
+    "symfony-bin-dir": "bin",
+    "symfony-var-dir": "var"}
 }
