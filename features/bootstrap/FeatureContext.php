@@ -245,6 +245,13 @@ JS;
     {
         throw new PendingException();
     }
+    /**
+     * @When I select lang :arg1
+     */
+    public function iSelectLang($arg1)
+    {
+        $this->articlenodepage->iSelectLangDD($arg1);
+    }
 
 }
 

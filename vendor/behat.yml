@@ -10,7 +10,6 @@ default:
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
   extensions:
-
     Drupal\MinkExtension:
       #goutte: ~
       selenium2:
@@ -21,26 +20,61 @@ default:
             chrome:
             chromeOptions:
               args:
-              - "--start-fullscreen"
+                - "--start-fullscreen"
               w3c: false
       browser_name: chrome
       default_session: selenium2
       base_url: https://umamisite.ddev.site/en
 
-      Drupal\DrupalExtension:
-        blackbox: ~
-        region_map:
-          footer1: ".region-content-bottom"
-          footer2: ".footer"
-          footer3: ".layout-bottom"
-          header: ".layout-header"
-          drupal_header: "#toolbar-bar"
-        selectors:
-          success_message_selector: 'div.messages__content'
-          #'span.messages__item'
-          error_message_selector: "document.querySelector('#edit-subject-0-value').validationMessage"
-        api_driver: 'drupal'
-        drush:
-          alias: 'local'
-          drupal:
-            drupal_root: '/var/www/seven/drupal'
+    Drupal\DrupalExtension:
+      blackbox: ~
+      region_map:
+        footer1: ".region-content-bottom"
+        footer2: ".footer"
+        footer3: ".layout-bottom"
+        header: ".layout-header"
+        drupal_header: "#toolbar-bar"
+      selectors:
+        success_message_selector: 'div.messages__content'
+        #'span.messages__item'
+        error_message_selector: "document.querySelector('#edit-subject-0-value').validationMessage"
+      api_driver: 'drupal'
+      drush:
+        alias: 'local'
+      drupal:
+        drupal_root: '/Users/saikrishna/umamisite/web'
+
+remote:
+  extensions:
+    Drupal\MinkExtension:
+      #goutte: ~
+      selenium2:
+        browser: chrome
+        wd_host: http://127.0.0.1:4444/wd/hub
+        capabilities:
+          extra_capabilities:
+            chrome:
+            chromeOptions:
+              args:
+                - "--start-fullscreen"
+              w3c: false
+      browser_name: chrome
+      default_session: selenium2
+      base_url: https://umamisite.ddev.site/en
+    Drupal\DrupalExtension:
+      blackbox: ~
+      region_map:
+        footer1: ".region-content-bottom"
+        footer2: ".footer"
+        footer3: ".layout-bottom"
+        header: ".layout-header"
+        drupal_header: "#toolbar-bar"
+      selectors:
+        success_message_selector: 'div.messages__content'
+        #'span.messages__item'
+        error_message_selector: "document.querySelector('#edit-subject-0-value').validationMessage"
+      api_driver: 'drupal'
+      drush:
+        alias: 'local'
+      drupal:
+        drupal_root: '/Users/saikrishna/umamisite/web'
