@@ -20,4 +20,4 @@ Feature:  verification of Article CT
     Examples:
       | url | title | body | lang | tags | save |
       | /en/node/add/article | new article | english body | English | Cocktail party | //input[@id='edit-submit'] |
-      | /es/node/add/article | espanyol article | espanyol body | Spanish | Carrots | //input[@id='edit-submit'] |
+      | /es/node/add/article | es article | espanyol body | Spanish | Carrots | //input[@id='edit-submit'] |
